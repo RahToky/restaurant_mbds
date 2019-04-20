@@ -7,7 +7,8 @@ class PanierModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            restaurants: props['restaurants']
+            restaurants: props['restaurants'],
+            commande:props['commande']
         }
     };
 
@@ -25,11 +26,16 @@ class PanierModal extends React.Component {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        <ShoppingCart /> Mes commandes
+                        <ShoppingCart /> Mes commandes ({this.state.commande.prix}<EuroSymbol/>)
             </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h5>Menus:</h5>
+                    <h5>Carte:</h5>
+                    <ul>
+                        {this.state.commande.cartes.map(carte=>(
+                            <li>{carte.nom}</li>
+                        ))}
+                    </ul>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.props.onHide}><Close /> Annuler mes commandes</Button>

@@ -18,7 +18,28 @@ class App extends Component {
       restaurants: [],
       size: 10,
       page: 1,
-      currPage: {/* data: [{ id:'2qf132q', nom: "22 Teutonic Ave.", cuisine: "german", latitude: "", longitude: "", menus: [] }] */ }
+      currPage: {/* data: [{ id:'2qf132q', nom: "22 Teutonic Ave.", cuisine: "german", latitude: "", longitude: "", menus: [] }] */ },
+      commande:
+      {
+        menus: [
+          {
+            nom: 'menu1',
+            prix: 9,
+            quantite: 2,
+            horsdoeuvre: { nom: 'horsdoeuvre' }
+          },
+          {
+            nom: 'menu2',
+            prix: 12,
+            quantite: 2
+          }
+        ],
+        cartes: [
+          { nom: 'carte1', quantite: 2, prix: 10 },
+          { nom: 'carte2', quantite: 1, prix: 15 }
+        ],
+        prix: 77
+      }
     };
 
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -34,7 +55,6 @@ class App extends Component {
       ...this.state,
       currPage: newCurrPage
     });
-
   }
 
   componentWillMount() {
@@ -56,12 +76,15 @@ class App extends Component {
     // this runs right before the <App> is rendered
   };
 
-  moins() {
-    alert("moins")
-  }
+  ajouterCarteDansPanier = (carte) => {
+    let commande = this.state.commande;
+    this.state.commande.cartes.map(c => {
+      if(c.nom.toLowerCase() !== carte.nom.toLowerCase()){
+        this.setState({
 
-  plus() {
-    alert("plus")
+        })
+      }
+    })
   }
 
   listerRestaurant = (restaurants, paginations) => {
@@ -76,6 +99,7 @@ class App extends Component {
       return (<>
         <PanierModal
           restaurants={this.state.restaurants}
+          commande={this.state.commande}
           show={this.state.modalShow}
           onHide={this.fermerPanier}
         />
@@ -85,6 +109,7 @@ class App extends Component {
       return (<>
         <PanierModal
           restaurants={this.state.restaurants}
+          commande={this.state.commande}
           show={this.state.modalShow}
           onHide={this.fermerPanier}
         />
@@ -101,6 +126,7 @@ class App extends Component {
       <>
         <PanierModal
           restaurants={this.state.restaurants}
+          commande={this.state.commande}
           show={this.state.modalShow}
           onHide={this.fermerPanier}
         />
@@ -150,58 +176,3 @@ class App extends Component {
 }
 
 export default App;
-
-/*
-<Pagination
-  activePage={this.state.page}
-  itemsCountPerPage={this.state.size}
-  totalItemsCount={this.state.restaurants.length}
-  pageRangeDisplayed={5}
-  onChange={this.handlePageChange} />
-
-
-  Mr donne = 47.500x5 = 237.500 + 10.000 => 250.000
-  Mr zananay = 27.500 x5 = 137.500
-  Mr moris = 47.500x4 = 190.000
-  Totoa Herisoa = 17.500x6 = 105.000
-
-  sosisy 4
-  sosisy 4 (pork)
-  kotleta 3
-  henakisoa tsy atao fa alahady
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*/*
-      Object.keys(this.state.currPage).map((key, index) => (
-        <p>index={index}</p>
-      ))
-    };
-    /*
-    <GridRestaurant post={this.state.currPage["data"][index]} onClick={this.test} />
-    <Pagination
-      activePage={this.state.page}
-      itemsCountPerPage={this.state.size}
-      totalItemsCount={this.state.restaurants.length}
-      pageRangeDisplayed={5}
-    onChange={this.handlePageChange}/>;};
-    return <p>liste restaurant</p>*/
