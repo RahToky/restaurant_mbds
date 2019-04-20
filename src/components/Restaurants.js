@@ -33,7 +33,7 @@ class Restaurants extends Component {
         if (this.state.restaurants == undefined)
             return <Row className="justify-content-md-center" style={{marginTop:100}}><Col sm={2}><ReactLoading type='bubbles' color='#1E90FF' height='150px' width='150px' /></Col></Row>;
         return (
-            <div style={{ marginTop: 20 }}>
+            <div style={{ marginTop: 20}}>
                 <h2 className="text-primary">Choisissez votre restaurant</h2>
                 <Row>
                     {this.state.restaurants.map((key, index) => (

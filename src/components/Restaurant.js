@@ -19,12 +19,12 @@ function Restaurant(props) {
   };
 
   return (
-    <Card>
+    <Card style={{backgroundColor:'#eee'}}>
       <Card.Img variant="top" src={process.env.PUBLIC_URL + '/img/resto/'+photoResto+".jpg"} />
       <Card.Body>
         <Card.Text>
           <h4><strong>{post.nom}</strong></h4>
-          <p>Cuisine {post.cuisine}</p>
+          <p style={{color:'gray'}}>Cuisine {post.cuisine}</p>
         </Card.Text>
       </Card.Body>
     </Card>

@@ -12,9 +12,9 @@ class PanierModal extends React.Component {
     };
 
     render() {
-        if(this.state.restaurants === undefined)
+        if (this.state.restaurants === undefined)
             return <></>
-        const restaurants=this.state.restaurants;
+        const restaurants = this.state.restaurants;
         return (
             <Modal
                 {...this.props}
@@ -30,13 +30,6 @@ class PanierModal extends React.Component {
                 </Modal.Header>
                 <Modal.Body>
                     <h5>Menus:</h5>
-                    {restaurants.map(restaurant => (
-                        <div>
-                            {restaurant.panier.cartes.map(carte => (
-                                <p>test</p>
-                            ))}
-                        </div>
-                    ))}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.props.onHide}><Close /> Annuler mes commandes</Button>
